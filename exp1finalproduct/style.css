@@ -1,0 +1,64 @@
+body {
+    background-image: url(https://i.ytimg.com/vi/M2uBtg_PzKg/maxresdefault.jpg);
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    border-radius: 25px;
+}
+
+.shoryuken{
+    font-size: 25px;
+    font-family: monospace;
+    color: skyblue;
+    text-align: center;
+    border: ridge;
+    width: 199px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+hr{
+    border-color: white;
+    border: dashed;
+}
+
+.boy {
+    font-size: large;
+    font-family: verdana;
+    color: white;
+}
+
+.ryu {
+    font-size: 20px;
+    color: rgb(225,0,0);
+    font-family: monospace;
+    text-align: center;
+    border: ridge;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#Halo{
+    font-size: large;
+    font-family: verdana;
+    color: white;
+}
+
+#gems{
+    font-size: large;
+    font-family: verdana;
+    color: white;
+}
+
+#amiibo{
+    font-size: large;
+    font-family: verdana;
+    color: white;
+}
+
+hr {
+    border-color: white;
+}

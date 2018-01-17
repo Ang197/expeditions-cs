@@ -1,0 +1,22 @@
+img {
+    width: 200px;
+}
+
+body {
+    text-align: center;
+    font-family: "Arial";
+}
+
+ol {
+    text-align: left;
+}
+
+.list {
+    text-align: center;
+    display: inline-block;
+}
+
+body {
+    background-image: url("paper.gif");
+    background-color: #cccccc;
+} 
