@@ -8,14 +8,14 @@ background(0, 0, 0);
 fill(random(255), random(255), 255);
 
 
-//This array is used to creat the lazer in my generative art.
+//This array is made to hold the entire structure of the lazer array.
 var bulletArray = [];
 
 //THe inbedded function, which is to help drag the spaceship on the screen
 draw = function() {
     background();
 
-    // loop command for the laser to keep on reappearing after executed, and that at a certain height of the screen, it will simply disappear at height 40 of the canvas. The conditions, move, and draw codes, are meant to execute the shape and movement of the lazer when fired on screen.
+    // loop command for the laser to keep on reappearing after each shot, and that at a certain height of the screen, it will simply disappear at height 40 of the canvas. The conditions, move, and draw codes, are meant to execute the shape and movement of the lazer when fired on screen.
     for (var i = 0; i < bulletArray.length; i++) {
         bulletArray[i].move();
         bulletArray[i].draw();
@@ -24,7 +24,7 @@ draw = function() {
         }
     }
 
-    //my if statement to help me spawn another space ship, when the mouse moves around the bottom half of the screen
+    //my if statement helps me spawn another space ship, when the mouse moves around the bottom half of the screen
     if (mouseY > 290) {
         triangle(mouseX + 15, mouseY + 50, mouseX, mouseY, mouseX - 15, mouseY + 50);
         fill(31, 22, 206);
@@ -33,7 +33,7 @@ draw = function() {
 
     }
 
-    //this is my else if statement, which is to execute the appearance of the galga ship, based on where the location of the screen in the yPos
+    //this is my else if statement, which is to spawn the appearance of the galga ship, based on where the location of the screen in the yPos which is the top half.
     else if (mouseY > 10) {
         pushMatrix();
         translate(mouseX - 50, mouseY - 50);
@@ -55,7 +55,7 @@ draw = function() {
 
 
     }
-    //this is a loop code, so that it can be able to spawn all the circles in the background and the randomizes the color
+    //this is another loop code, so that it can be able to spawn all the cicles in the background and randomizes the color and shap.
     for (var i = 0; i < width; i += 90) {
         for (var j = 0; j < height; j += 90) {
             ellipse(i, j, random(20), random(20));
@@ -65,7 +65,7 @@ draw = function() {
     }
 };
 
-//this function is to help executed the command of the laser with the use a keyPress function, which is the spacebar(the 32 represents the keycode of the spacebar, which helps execute the spacebar's command).
+//this function is to help fire the command of the laser with the use a keyPress function, which is the spacebar(the 32 represents the keycode of the spacebar, which allows the spacebar to sho).
 keyPressed = function() {
     if (keyCode == 32) {
         bulletArray.push({
