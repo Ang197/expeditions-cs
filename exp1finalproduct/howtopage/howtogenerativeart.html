@@ -8,12 +8,10 @@
 
 <body>
     <ul class="navbar">
-        <a href="howtogenerativeart.html">
-            <li>How to</li>
-        </a>
-        <a href="generativeartpage2.html">
-            <li>Extras</li>
-        </a>
+            <a href="../aboutme.html"><li>About Me</li></a>
+            <a href="../whatilearned.html"><li>What I learned</li></a>
+            <a href="../../int2checkpoints/checkpoint5/generativeartpage.html"><li>Generative Art</li></a>
+            <a href="howtogenerativeart.html"><li>How to do generative art</li></a>
     </ul>
 
     <h1 style="border:10px solid black">How I made my generative art page</h1>
@@ -45,7 +43,7 @@
             <img src="images2/galaga.jpg" width="200px">
             <li>The next code that I used was a loop code, which I used to bring up some certain elements to enhance the page's visuals. The main example that can take this is the stars that were used in the background, which had random chnages in the colors
                 and shape because of the use of the conditions. This is because I wanted to give a more shiny and alive background to the page rather than simple boring white dots that represent the stars instead. So for the page, I wanted to multiple
-                different colors that mostly included different shades of blue, purple, or even white, because I wanted it to look cosmic and futuristic. Along with the background, With the spaceships, I also passed down the same color palettes to the
+                different colors that mostly included different shades of blue, purple, or even white, because I wanted it to look cosmic and futuristic. Along with the background, With the spaceships, I also passed down the same rgb choices to the
                 ships, just to make it more consistent and simple with all the colors. The elements that I used for this code, were also what helped piece the entire thing together and created the animated background. The first one is that loop's conditionals
                 which are numbers and variables that are used inside the parenthesis. These allow to either affect the height and width of all the circles, or translate the group of shapes based on which side of the screen their on. The ones on the bottom
                 are ellipse which allows to create the circle, the fill which is the color, and stroke which affects the border's color of all the circles. In addition, all three of these have different conditions to them, such as stroke and fill having
@@ -57,7 +55,7 @@
                 a little difficult for the shape to follow mouse, because of each individual measurment needed to be relative to the mouse on screen. Most of invovled subtracting or adding all the coordinates because it was pretty difficult placing both
                 ships on an appropiate spot on the mouse, but after a lot guessing and checking I managed to place both ships on the best position I can find. With codes, I already talked about the making of the Galaga ship in the first bulletpoint, but
                 the Asteroid one is different becaue it doesn't use any push or pop matrix because of it belong in an if statment. What that statement does is simply telling that, if the mouse y position is set somewhere greater than 290(mainly the lower
-                half of the screen) it will appear on the part of the screen when your mouse hovers over it. Same can be said for the Galaga ship because it has a condition say if mouse Y position is less than 10(mainly the top half) it will appear there
+                half of the screen) it will appar on the part of the screen when your mouse hovers over it. Same can be said for the Galaga ship because it has a condition say if mouse Y position is less than 10(mainly the top half) it will appear there
                 instead. The other thing about the Asteroid ship is that it also contains the same fill and stroke which was explained in the second bulletpoint, but it also contains strokeweight which helps thicken or thins the border of the shape.</li>
             <img src="images2/ship1.jpg">
             <img src="images2/ship2.jpg">
@@ -65,7 +63,11 @@
             <img src="images2/asteroid.jpg" width="200px">
             <li>Finally, the last and the biggest code that was used for this, was an array to make both spaceships shoot out a lazer. The reason I wanted to choose to do this, is because I wanted to make this page even more interactive and that I thought
                 this might be the best idea to do since I just wanted something that the user can be able to do other simply fly around the screen and do nothing. With the making of the array code, I was being supported by my teacher, Mr.Hesby, and his
-                assisstant, Adrielo, to help me structure out the entire thing. With the array, the first thing to make is the var bulletarray=[] which basically holds an entire list of objects together. Then there's the </li>
+                assisstant, Adrielo, to help me structure out the entire thing. With the array, the first thing to make is the var bulletarray=[] which basically holds an entire list of objects together. Then there's certain objects or codes that are held inside
+                of the array. Some of them I can be able indentify, such as the keypressed function which allows the ability to spawn the lazer with a certain key on the keyboard. The other aspect of this code is the if statement, which allows the spacebar to shoot out
+                the laser. This is mainly indicated by the number 32 inside of the if statement's conditions, which is actually the keycode that is being activated by this condition, and that is why it says keycode equals 32. The other ones such as xPos: mouseX and Ypos:
+                mouseY represent the location of where the lazer will be shot. What this means is that, the laser will be shot out based on the location of your mouse on the x or y planes of the screen. For the final one is the move function which contains this.yPos -= 5, which is basically the speed of
+                the bullet. Finally, there belongs .move and.draw codes and if statement in the second picture. What I know from the best of my extent, is that these make up the design of the lazer and limit how far it will move up towards the top of the screen.</li>
             <img src="images2/bullet1.jpg">
             <img src="images2/bullet2.jpg">
             <img src="images2/bullet3.jpg">
