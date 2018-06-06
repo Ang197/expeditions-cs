@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="navbar.css" type="text/css">
+    <link rel="stylesheet" href="navbar4.css" type="text/css">
+    <link rel="stylesheet" href="howtodoai.css" type="text/css">
+    <title>How to make an A.I bot</title>
+</head>
+
+<body>
+    <!--These are the links to all of the pages/final products, which all link to 4 different navbars.-->
+    <ul class="navbar">
+            <a href="aboutme.html"><li>About Me</li></a>
+            <a href="whatilearned.html"><li>What I learned</li></a>
+            <a href="how-to.html"><li>How I made my about me page</li></a>
+            <a href="extra-questions.html"><li>Extra questions</li></a>
+            <a href="../int2checkpoints/checkpoint5/generativeartpage.html"><li>Generative Art</li></a>
+            <a href="howtopage/howtogenerativeart.html"><li>How to do generative art</li></a>
+            <a href="finalproduct3/database.html"><li>Video Game Database</li></a>
+            <a href="finalproduct3/HowToDatabase.html"><li>How to do Video Game Database</li></a>
+            <a href="howtodoai.html"><li>How to make an A.I bot</li></a>
+    </ul>
+    
+    <h1 style="border: 10px solid black;">How to make an A.I bot</h1>
+
+    <!--The select id is what creates the dropdown box, and gives all five options to check out some of my choices and writing for this project.-->
+    <select id="infocategory">
+        <!--These are the list of options, which are mainly labels to what the user would see inside of the dropbo-->
+        <option value="what is">What is Vindinium?</option>
+        <option value="how works">How does your bot work?</option>
+        <option value="learned">What did you learn about A.I?</option>
+        <option value="code">Your bot's code</option>
+    </select>
+
+    <div id="display" style="margin-top: 15px;"></div>
+
+    <div class="info">
+        <img id="image1" src="images/vindinium-part1.png" width="500">
+        <img id="image2" src="images/vindinium-part2.png" width="500">
+        <p id="info">Vindinium is a game where you create an A.I to fight
+        against other player's who also have an A.I bot. As the player, you need to be able code-in certain commands for your bot
+        in order to gain victory in the match. Some of these commands could include killing the player closest to you, killing the player with
+        most amount of gold, taking all other players' mines, or having to go to a tavern in order to heal your bot.</p>
+    </div>
+    <div class="info">
+        <p>There are three main sections of the code for my bot. The first part defines the global data that rest of the code uses. The second part figures out what task to do. The third part tells how to do each task.</p>
+
+
+
+
+        <pre style="margin-top: 100px;"><code>
+var enemyBots = [];
+if (bot.yourBot.id != 1) enemyBots.push(bot.bot1);
+if (bot.yourBot.id != 2) enemyBots.push(bot.bot2);
+if (bot.yourBot.id != 3) enemyBots.push(bot.bot3);
+if (bot.yourBot.id != 4) enemyBots.push(bot.bot4);
+        </code></pre>
+        <p>In the first set above, each if statment indicates the list of enemies during a game. The bot would look through a list of players that are present in the game,
+        and depending on which one you are, the bot only select those who are enemies and not you. With the bot.yourBot.id, it would simply find one of the four 
+        players as you instead of the other 3. From there, it would pushout the identification of you being the enemy.</p> 
+
+
+
+
+        <pre style="margin-top: 100px;"><code>
+var richestBot = enemyBots[0];
+for (var i = 0; i < enemyBots.length; i++) {
+    if (enemyBots[i].gold > richestBot.gold) {
+        richestBot = enemyBots[i];
+    }
+}
+        </code></pre>
+        <p>The section of my code figures out who the richest enemy bot is. It uses an already-existing array called enemyBots. This array contains several objects, each of which 
+        represents one of the enemies in the game. The first thing it does is assumes that the first enemy in the array (the one at index 0) has the most gold. This enemy gets stored in the variable
+        richestBot. Then I use a for-loop, which iterates through the enemyBots array. This means that it runs the same procedure on each enemy bots. Since the for-loop assumes that the first bot
+        has the most gold, it might no necessarly store in the richest bot. Therefore, it has to compare itself to the rest of the bots in the array to see if they have more gold. On each iteration, 
+        if the bot we're looking at has more gold than the one we think is the richest, we update on the variable richestBot to store the one that we were looking at. Once the for-loop has iterated through 
+        the entire array, the richestBot variable will accurately refer to the enemy with the most gold.</p>
+
+
+
+
+        <pre style="margin-top: 100px;"><code>
+var closestBot = enemyBots[0];
+for (var i = 0; i < enemyBots.length; i++) {
+    if (bot.findDistance(myPos, closestBot.posArray) > bot.findDistance(myPos, closestBot[i].posArray)) {
+        closestBot = enemyBots[i];
+    }
+}
+        </code></pre>
+        <p>This code works similar to the code that figures out the richest bot, except it looks for the closest enemy bot by comparing the distance of each enemy from my bot. </p>
+
+
+
+
+        <pre style="margin-top: 100px;"><code>
+var task;
+if (bot.yourBot.life < 35) {
+    task = "health";
+}
+// 
+else if (bot.yourBot.life > closestBot.life && bot.findDistance(myPos.closestBot.posArray) < 5) {
+    task = "attack closest";
+}
+else if (bot.yourbot.life >= 90) {
+    task = "killRichest";
+}
+else {
+    task = "freeMines";
+}
+        </code></pre>
+        <p>These lines of code decide what my bot should do each turn. The first line creates a variable called task. This variable can get assigned a different value each turn 
+        depending on certain condtions. The first priority is to see if my bot needs to heal because it is important not to die (and lose all its mines). If my bot has less than 
+        35 health, it will set task to "health".</p>
+        <p>Then it considers attacking the closest enemy bot. It accomplishs this by checking for two things. It first checks to see if I have more health than the closest bot (which
+        was figured out earlier). This is important because if the enemy bot has more health than me, I will probably die, and it would not be a good idea to attack them. The other thing
+        it checks for is that the closest enemy is less than 3 spaces away from mine (a distance of 2 means they are right next to each other). It does this because I want my bot to be 
+        more defensive, so I want it only to attack bots that are really close to me. If both of these conditions are fulfilled, then task would be set to attacking the closest bot.</p>
+        <p>The final thing it considers is destorying the richest bot. This is because killing an enemy bot will give me all of their mines, and the richest probably has the most. However,
+        the richest player is also probably very good, I only want to attack them if my health is near full. If none of these are good options, my bot will just search for free mines to claim.</p>
+        <!-- Broad explanation, significance(why its important), explaination on how it works-->
+
+
+
+        <pre style="margin-top: 100px;"><code>
+else if (task === "health") {
+    var closestTavern = bot.taverns[0];
+    for (var i = 0; i < bot.tavern.length; i++) {
+        if (bot.findDistance(myPos, closestTavern) > bot.findDistance(myPos, bot.taverns[i])) {
+            closestTavern = bot.taverns[i];
+        }
+    }
+    console.log("Getting Health!");
+    myDir = bot.findPath(myPos, closestTavern);
+}
+        </code></pre>
+        <p>The final section of my code figures out how to do the task that my bot is assigned. I'm not going to go into detail on how all of it works, but I will explain how one part of it works, because
+        the rest is really similar. This particular portion figures out how to heal by looking for the closest tavern and going there. The algorithm for finding the closest tavern is simlar to the one for
+        finding the richest bot, except it compares the distance between my bot and each tavern. After that, it sets a direction towards the taverns so that it can eventually get there. </p>
+    </div>
+    <div class="info">
+        <pre><code>
+        </code></pre>
+        <img id="image3" src="images/time.jpg" width="250">
+        <img id="image4" src="images/firekeeper_small.jpg">
+        <p>With A.I, I learned that they need a lot of code for a certain task to happen. You would need a crazy amount of code like for-loops, if-statements, and variables, just to do a simple task.
+        I also learned that computers aren't as smart as we are, mainly because they will only do exactly what they are told. It is up to us to create and tell them their instructions. Finally, I
+        learned how much time is needed to program instructions for particular action.</p>
+        <p>In terms of technical skills, I learned how find the minimum or maximum value in an array by using a for-loop and an if-statement. I also learned how to assign tasks using a variable and 
+        multiple conditional statements (if-statements and else-if statements). </p>
+    </div>
+    <div class="info">
+        <pre><code>
+var Bot = require('bot');
+var PF = require('pathfinding');
+var bot = new Bot('19moubjx', 'arena', 'http://vind-legacy.thegrid.red'); //Put your bot's code here and change training to Arena when you want to fight others.
+// var bot = new Bot('YOUR_KEY_HERE', 'arena', 'http://bgdb.hesby.io:9000'); //Put your bot's code here and change training to Arena when you want to fight others.
+var goDir;
+var Promise = require('bluebird');
+Bot.prototype.botBrain = function() {
+    return new Promise(function(resolve, reject) {
+        _this = bot;
+        //////* Write your bot below Here *//////
+        //////* Set `myDir` in the direction you want to go and then bot.goDir is set to myDir at the bottom *////////
+
+        /*                                      *
+         * This Code is global data!            *
+         *                                      */
+
+        // Set myDir to what you want and it will set bot.goDir to that direction at the end.  Unless it is "none"
+        var myDir;
+
+        //
+        var myPos = [bot.yourBot.pos.x, bot.yourBot.pos.y];
+
+        //
+        var enemyBots = [];
+        if (bot.yourBot.id != 1) enemyBots.push(bot.bot1);
+        if (bot.yourBot.id != 2) enemyBots.push(bot.bot2);
+        if (bot.yourBot.id != 3) enemyBots.push(bot.bot3);
+        if (bot.yourBot.id != 4) enemyBots.push(bot.bot4);
+
+        //finds closest bot and stores in closeset bot. With the for loop, it would go through all enemy bots, based on which one is the closest position. Depending on where you are standing, the code will compare all 4 enemies based on the distance they are from my current location.
+        var closestBot = enemyBots[0];
+        for (var i = 0; i < enemyBots.length; i++) {
+            if (bot.findDistance(myPos, closestBot.posArray) > bot.findDistance(myPos, closestBot[i].posArray)) {
+                closestBot = enemyBots[i];
+            }
+        }
+
+        //This helps finds the richest enemy on the map, and kills them when they get nearby. Just like the for loop in closest enemy bot, it will compare all enemy bots and give me the choice of which one is the richest. What helps that is the if statement, which is basing my loop off of the richest enemy. If it finds that enemy, I will go straight to the enemy and go kill them for their gold.
+        var richestBot = enemyBots[0];
+        for (var i = 0; i < enemyBots.length; i++) {
+            if (enemyBots[i].gold > richestBot.gold) {
+                richestBot = enemyBots[i];
+            }
+        }
+
+
+
+        /*                                      *
+         * This Code Decides WHAT to do         *
+         *                                      */
+        var task;
+        //This else if and if functions are allowed to be initiated based on which statment is true. If the first statment, the else if statment isn't true, it would pass on to the other statment and try to see if that one works. The if statment is signifying that the user would need to go to the tavern in order to regain health back. However, if the user's health was above 36, they would simply just farm for mines.
+        if (bot.yourBot.life < 35 && bot.yourBot.life > closestBot.life && bot.findDistance(myPos.closestBot.posArray)) {
+            task = "health";
+        }
+        //A certain task that my A.I will follow, is based off the condition. Mainly, if it has less than 35 health, it will take the mines.
+        else if (bot.yourBot.life < 35) {
+
+        }
+        else if (bot.yourbot.life === 100) {
+            task = "killRichest";
+        }
+        else {
+            task = "freeMines";
+        }
+
+
+
+
+
+        /*                                      *
+         * This Code Determines HOW to do it    *
+         *                                      */
+        if (task === "none") {
+            console.log("Going Random!");
+            var rand = Math.floor(Math.random() * 4);
+            var dirs = ["north", "south", "east", "west"];
+            myDir = dirs[rand];
+        }
+        //Each if and else if statement is meant to cause certain actions based on the distance of the of a certain place or enemy bot is away from your bot. There belongs bot.freeMines, which is an array of all enemies that would be found on screen. This would list all loctions like all being [[x,y][x,y][x,y][x,y]], and the closest mine would check all four arrays and see which is the closest depending on which comes closer to the A.I. With the for loop, it will check all arrays starting with 0, meaning the first array, and will go through all arrays, until it gets the closest.
+        else if (task === "freeMines") {
+            var closestMine = bot.freeMines[0];
+            for (var i = 0; i < bot.freeMines.length; i++) {
+                if (bot.findDistance(myPos, closestMine) > bot.findDistance(myPos, bot.freeMines[i])) {
+                    closestMine = bot.freeMines[i];
+                }
+            }
+            //With the conosle log, it is supposed to let the user know what the bot's actions are based on a certain turn. With this one, the console is signaling the user that they manage to grab a certain mine for currency
+            console.log("Grabbing a free mine!");
+            myDir = bot.findPath(myPos, closestMine);
+        }
+        //This else if statement is the tavern one, in which the player would go to a tavern to recover health because of having conditions of having less than 35 health. The bot.taverns is array which list taverns, which means it would apply to all and gives the A.I the closest one to look for. This would list all loctions like all being [[x,y][x,y][x,y][x,y]], and the closes tavern would check all four arrays and see which is the closest. With the for loop, it will check all arrays starting with 0, meaning the first array, and will go through all arrays, until it gets the closest.
+        else if (task === "health") {
+            var closestTavern = bot.taverns[0];
+            for (var i = 0; i < bot.freeMines.length; i++) {
+                if (bot.findDistance(myPos, closestTavern) > bot.findDistance(myPos, bot.taverns[i])) {
+                    closestTavern = bot.taverns[i];
+                }
+            }
+            //kist like the free mine console log, this one mainly gives the A.I for the decision of having to gain free health.
+            console.log("Getting Health!");
+            myDir = bot.findPath(myPos, closestTavern);
+        }
+        //However if the A.I's health is above 35 or the designated in all of the task codes you programmed, the A.I will simply attack the enemy closest to their location.
+        else if (task === "attack closest") {
+            console.log("Attacking Closest Bot!");
+            myDir = bot.findPath(myPos, closestBot.posArray);
+        }
+        //With this else if statement, my A.I will be killing the richest enemy bot, that is closest to my position. 
+        else if (task === "killRichest") {
+            console.log("Killing the richest");
+            myDir = bot.findPath(myPos, richestBot.posArray);
+        }
+
+
+        /*                                                                          *
+         * This Code Sets your direction based on myDir. Change if you want.        */
+
+        bot.goDir = myDir;
+
+        ///////////* DON'T REMOVE ANTYTHING BELOW THIS LINE *//////////////
+        resolve();
+    });
+};
+
+bot.runGame();
+
+        </code></pre>
+        <p>This entire set of code is my javascript file for my A.I. As you can see, it has everything that is needed in order to be activated.</p>
+    </div>
+    
+    <!--This div tag is to help execute the text and images uesd for my page, and that it will only execute one option at a time, by replacing the last one the user clicked and enter and that there's one div tag being manipulated.-->
+    <div id="mychoices"></div>
+    <script type="text/javascript" src="howtodoai.js"></script>
+
+</body>
+
+</html>

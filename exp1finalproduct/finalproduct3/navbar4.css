@@ -1,0 +1,25 @@
+.navbar {
+    text-align: left;
+    background-color: white;
+    /*display: inline-block;*/
+    border: 2px solid black;
+    text-decoration: none;
+    padding: 5px;
+    border-radius: 15px;
+    font-size: 23px;
+    font-family: sans-serif;
+}
+
+.navbar a {
+    display:inline-block;
+
+}
+
+.navbar a:hover{
+    background-color:rgb(112,128,144);
+    
+}
+
+.navbar li{
+    list-style: none;
+}

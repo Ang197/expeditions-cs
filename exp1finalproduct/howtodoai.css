@@ -1,0 +1,9 @@
+h1 {
+    text-align: center;
+    color: black;
+    border-radius: 25px;
+}
+
+.info {
+    display: none;
+}
